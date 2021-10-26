@@ -1,0 +1,15 @@
+[default]
+compiler=Gnu
+cflags=-c -fPIC -O3
+lflags=-shared
+mod_dir=./mod/
+obj_dir=./obj/
+build_dir=./
+src=./src/
+colors=True
+quiet=False
+target=DLS_read_input.f90
+output=libspheroid.so
+mklib=shared
+log=True
+

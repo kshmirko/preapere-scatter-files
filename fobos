@@ -1,0 +1,27 @@
+[default]
+compiler=Gnu
+cflags=-c -O3
+lflags=
+dependon = ./spheroid/fobos
+mod_dir=./mod/
+obj_dir=./obj/
+build_dir=./build
+src=./src/
+colors=True
+quiet=False
+target=main.f90
+output=dubovik
+log=True
+
+
+[rule-clean]
+rule-1 = FoBiS.py clean
+rule-2 = rm -rf build spheroid/build
+
+[rule-makelink]
+rule-1 = ln -s /Users/kshmirko/Documents/Programming/Go/preparedataformodel/KRNLS_arnt_sphrds build/
+rule-2 = ln -s /Users/kshmirko/Documents/Programming/Go/preparedataformodel/KRNLS_arnt_sphrs build/
+rule-3 = ln -s /Users/kshmirko/Documents/Programming/Go/preparedataformodel/input_sphrds.dat build/
+rule-4 = ln -s /Users/kshmirko/Documents/Programming/Go/preparedataformodel/input_sphrs.dat build/
+rule-5 = ln -s /Users/kshmirko/Documents/Programming/Go/preparedataformodel/data.csv build/
+rule-6 = ln -s /Users/kshmirko/Documents/Programming/Fortran/dubovik/spheroid/libspheroid.so build/
