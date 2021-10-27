@@ -1,7 +1,8 @@
 [default]
 compiler=Gnu
+fc=gfortran-mp-11
 cflags=-c -fPIC -O3
-lflags=-shared
+lflags=-shared 
 mod_dir=./mod/
 obj_dir=./obj/
 build_dir=./

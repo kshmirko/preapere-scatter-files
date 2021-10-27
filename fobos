@@ -1,5 +1,6 @@
 [default]
 compiler=Gnu
+fc=gfortran-mp-11
 cflags=-c -O3
 lflags=
 dependon = ./spheroid/fobos
@@ -16,12 +17,12 @@ log=True
 
 [rule-clean]
 rule-1 = FoBiS.py clean
-rule-2 = rm -rf build spheroid/build
+rule-2 = rm -rf build spheroid/build spheroid/libspheroid.so
 
 [rule-makelink]
-rule-1 = ln -s /Users/kshmirko/Documents/Programming/Go/preparedataformodel/KRNLS_arnt_sphrds build/
-rule-2 = ln -s /Users/kshmirko/Documents/Programming/Go/preparedataformodel/KRNLS_arnt_sphrs build/
-rule-3 = ln -s /Users/kshmirko/Documents/Programming/Go/preparedataformodel/input_sphrds.dat build/
-rule-4 = ln -s /Users/kshmirko/Documents/Programming/Go/preparedataformodel/input_sphrs.dat build/
-rule-5 = ln -s /Users/kshmirko/Documents/Programming/Go/preparedataformodel/data.csv build/
-rule-6 = ln -s /Users/kshmirko/Documents/Programming/Fortran/dubovik/spheroid/libspheroid.so build/
+rule-1 = ln -s /Users/kshmirko/Documents/Programming/Fortran/preapere-scatter-files/KRNLS_arnt_sphrds build/
+rule-2 = ln -s /Users/kshmirko/Documents/Programming/Fortran/preapere-scatter-files/KRNLS_arnt_sphrs build/
+rule-3 = ln -s /Users/kshmirko/Documents/Programming/Fortran/preapere-scatter-files/input_sphrds.dat build/
+rule-4 = ln -s /Users/kshmirko/Documents/Programming/Fortran/preapere-scatter-files/input_sphrs.dat build/
+rule-5 = ln -s /Users/kshmirko/Documents/Programming/Fortran/preapere-scatter-files/data.csv build/
+rule-6 = ln -s /Users/kshmirko/Documents/Programming/Fortran/preapere-scatter-files/spheroid/libspheroid.so build/
