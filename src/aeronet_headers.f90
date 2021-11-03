@@ -1,5 +1,5 @@
 module arnt_hdrs
-	
+! Наименование столбцов данныж
 	integer, parameter	::	AodExtTot_440nm = 1
 	integer, parameter	::	AodExtTot_675nm = 2
 	integer, parameter	::	AodExtTot_870nm = 3
@@ -66,6 +66,7 @@ module arnt_hdrs
 	integer, parameter	::	SufAlbedo_1020nm = 64
 	integer, parameter	::	USED_COLUMNS_COUNT = 64
 	integer, parameter	::	COLUMNS_COUNT 	= 155
+    ! Номера столбцов данных из файла AERONET
 	integer, parameter	::	indices(USED_COLUMNS_COUNT)		= &
 	&[ 11, 12, 13, 14, 23, 28, 29, 30, 31, 33, 34, 35, 36, 37,&
 	& 38, 39, 40, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, &

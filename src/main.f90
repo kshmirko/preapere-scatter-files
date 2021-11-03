@@ -2,10 +2,11 @@ program main
 	use mo_par_dls
 	use mo_dls, only: key, keyel, ndp
 	use arnt_hdrs
+	use utils
 	implicit none
 	integer, parameter	::	dp = kind(1.d0)
 	
-	integer(kind=kind(10))	::	I,J, ERR, unit, N, doy
+	integer(kind=kind(10))	::	I,J, ERR, iounit, N, doy
 	character(len=20)		::	site, date, time
 	character(len=80)		::	errmsg
 	character(len=15)		::	raw_row(COLUMNS_COUNT)
@@ -14,25 +15,28 @@ program main
 								&error_parse_line
 	N=10
 
-	open(newunit=unit, file='data.csv', status='old', iostat=ERR,&
-		& iomsg=errmsg)
-	if (ERR.ne.0) then
-    	
-		print *, errmsg
-    	stop
+	open(newunit=iounit, file='data.csv', status='old', iostat=ERR,&
+		iomsg=errmsg)
+	
+	!
+	! If there was an error, ERR!=0
+	!
+	if (ERR.ne.0) then	
+		CALL FATAL(errmsg)
     endif
 
 	! Skip header line
-    read(unit, *)
+    read(iounit, *)
 	
 	I=0
 	error_parse_line = .FALSE.
 	error_read_line = .FALSE.
+	
 mainloop: DO 
 		! очищаем память под массив данных
 		raw_row = ''
 		! читаем строку из файла в массив строк
-    	read(unit, *, iostat=ERR, iomsg=errmsg) &
+    	read(iounit, *, iostat=ERR, iomsg=errmsg) &
 			&(raw_row(J),J=1,COLUMNS_COUNT)
 		
 		! Если при чтении возникла ошибка, 
@@ -53,7 +57,7 @@ mainloop: DO
 		!разбираем интересующие нас столбцы
 		inner_loop: DO J=1, USED_COLUMNS_COUNT
 			read(raw_row(indices(J)), *, iostat=ERR, iomsg=errmsg)&
-			& used_row(J)
+				used_row(J)
 			
 			
 			if (ERR.ne.0) then
@@ -72,7 +76,7 @@ mainloop: DO
 		!print '(4F7.2)', used_row(1:4)
     END DO mainloop
 
-    close(unit)
+    close(iounit)
 
 	
 	if (.not. (error_read_line .and. error_parse_line)) then

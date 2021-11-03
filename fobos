@@ -1,6 +1,6 @@
 [default]
 compiler=Gnu
-fc=gfortran-mp-11
+#fc=gfortran-mp-11
 cflags=-c -O3
 lflags=
 dependon = ./spheroid/fobos
